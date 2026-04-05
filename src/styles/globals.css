@@ -1,0 +1,128 @@
+/* ================================================================
+   FINANCE DASHBOARD — Global Styles & Design Tokens
+   ================================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens (CSS Custom Properties) ── */
+:root {
+  --color-bg-base:        #0D0F14;
+  --color-bg-surface:     #13161E;
+  --color-bg-elevated:    #1A1E2A;
+  --color-bg-border:      #242836;
+
+  --color-accent-primary:     #00D4AA;
+  --color-accent-primary-dim: rgba(0, 212, 170, 0.13);
+  --color-accent-income:      #F5A623;
+  --color-accent-income-dim:  rgba(245, 166, 35, 0.09);
+  --color-accent-expense:     #FF5C6A;
+  --color-accent-expense-dim: rgba(255, 92, 106, 0.09);
+
+  --color-text-primary:   #E8ECF4;
+  --color-text-secondary: #8892A4;
+  --color-text-muted:     #4A5266;
+
+  --radius-card:  12px;
+  --radius-btn:   8px;
+  --radius-badge: 4px;
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+/* ── Base Reset ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary);
+}
+
+/* ── Stagger Animation Classes ── */
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 160ms; }
+.stagger-4 { animation-delay: 240ms; }
+.stagger-5 { animation-delay: 320ms; }
+.stagger-6 { animation-delay: 400ms; }
+
+/* Animate card entry */
+.animate-card {
+  opacity: 0;
+  animation: fadeInUp 400ms ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ── Number Font Utility ── */
+.font-number {
+  font-family: var(--font-mono);
+}
+
+/* ── Recharts Dark Theme Overrides ── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--color-bg-border);
+  stroke-dasharray: 4 4;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+/* ── Badge pill transitions ── */
+.filter-chip {
+  transition: all 150ms ease;
+}
+.filter-chip:hover {
+  filter: brightness(1.15);
+}
+
+/* ── Smooth page transitions ── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
